@@ -1,6 +1,7 @@
 <html>
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
 </head>
 <body ng-app="MyObject" ng-controller="MyContoller2"  ng-style="MyObj">
 <?php
@@ -12,8 +13,8 @@ if(!empty($id)) {?>
     <div>
         News Id : {{News.News_ID}} <br>
         News Title : {{News.News_Title}} <br>
-        News Lead : {{News.News_Lead}} <br>
-        News Desc : {{News.News_Desc}} <br>
+        News Lead : <a href="files/{{News.News_Lead}}" target="_blank">{{News.News_Lead}}</a><br>
+        News Desc : <a href="files/{{News.News_Desc}}" target="_blank">{{News.News_Desc}}</a><br>
     </div>
     <script>
         var MyModule = angular.module("MyObject", []);
@@ -33,7 +34,6 @@ if(!empty($id)) {?>
         app.controller("MyContoller2", function ($scope) {
             $scope.MyObj = {
                 "color": "Black",
-                "background-color": "Pink",
                 "font-size": "12px",
                 "padding": "50px"
             }
@@ -43,33 +43,54 @@ if(!empty($id)) {?>
     <div ng-init="BackColour='LightBlue' ">
 
 
-        <h1 align="center" style="font-size:60px">Internship</h1>
+        <h1 align="center" style="font-size:60px; width: ">Internship</h1>
+        <br>
+        <br>
 
 
-        <form action="../FirstPage.php" method="post"  enctype="multipart/form-data">
-
-            NewsTitle:<input type="text" name="News_Title"  style="background-color: {{BackColour}}">
-            <br>
-            <!--        -->
-            <!--        <p>-->
-            <!--            FileName2:<input type="text" name="FileName2" ng-model="FileName2" style="background-color: {{BackColour}}">-->
-            <!--            <br>-->
-            <!--        <p>Second File for Uploading is <span ng-bind="FileName2"></span></p>-->
-            <!--        </p>-->
+        <form action="../FirstPage.php" method="post" enctype="multipart/form-data">
 
 
-            NewsLead: <input type="file" name="fileToUpload1">
-            <br><br>
-            NewsDesc: <input type="file" name="fileToUpload2">
-            <br><br>
-            <input type="submit" name="Submit">
+            <table style="with:400px;   background-color: mistyrose" align="center" border="1">
+                <tr>
+                    <td style="padding-top: 20px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px">
+                        NewsTitle: <input type="text" name="News_Title"
+                                          style="background-color: {{BackColour}}; width: 300px;">
+
+                        <br>
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-top: 20px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px">
+                        NewsLead: <input type="file" name="fileToUpload1" style="width: 300px; b">
+                        <br>
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-top: 20px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px">
+                        NewsDesc: <input type="file" name="fileToUpload2" ;>
+                        <br>
+                        <br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <input type="submit"/>
+
+
+                    </td>
+                </tr>
+            </table>
+
         </form>
 
     </div>
 
-<?php
+    <?php
 }
 ?>
 </body>
 </html>
-
